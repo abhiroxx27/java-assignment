@@ -1,0 +1,99 @@
+import java.util.Scanner;
+
+public class calculateTotal {
+
+  
+    public static int calculateTotal(int value) {
+        return value;
+    }
+
+    public static int calculateTotal(int value, int quantity) {
+        return value * quantity;
+    }
+
+    public static int calculateTotal(int value1, int value2, int value3) {
+        return value1 + value2 + value3;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the number of inputs (1, 2, or 3):");
+        if (!scanner.hasNextInt()) {
+            System.out.println("Invalid input. Please enter a valid number.");
+            scanner.close();
+            return;
+        }
+
+        int inputs = scanner.nextInt();
+        int res = 0;
+
+        switch (inputs) {
+            case 1:
+                System.out.println("Enter one value:");
+                if (scanner.hasNextInt()) {
+                    int n1 = scanner.nextInt();
+                    res = calculateTotal(n1);
+                } else {
+                    System.out.println("Invalid input. Please enter an integer.");
+                    scanner.close();
+                    return;
+                }
+                break;
+
+            case 2:
+                System.out.println("Enter the price and quantity:");
+                if (scanner.hasNextInt()) {
+                    int price = scanner.nextInt();
+                    if (scanner.hasNextInt()) {
+                        int quantity = scanner.nextInt();
+                        res = calculateTotal(price, quantity);
+                    } else {
+                        System.out.println("Invalid input for quantity. Please enter an integer.");
+                        scanner.close();
+                        return;
+                    }
+                } else {
+                    System.out.println("Invalid input for price. Please enter an integer.");
+                    scanner.close();
+                    return;
+                }
+                break;
+
+            case 3:
+                System.out.println("Enter three values:");
+                if (scanner.hasNextInt()) {
+                    int value1 = scanner.nextInt();
+                    if (scanner.hasNextInt()) {
+                        int value2 = scanner.nextInt();
+                        if (scanner.hasNextInt()) {
+                            int value3 = scanner.nextInt();
+                            res = calculateTotal(value1, value2, value3);
+                        } else {
+                            System.out.println("Invalid input for the third value. Please enter an integer.");
+                            scanner.close();
+                            return;
+                        }
+                    } else {
+                        System.out.println("Invalid input for the second value. Please enter an integer.");
+                        scanner.close();
+                        return;
+                    }
+                } else {
+                    System.out.println("Invalid input for the first value. Please enter an integer.");
+                    scanner.close();
+                    return;
+                }
+                break;
+
+            default:
+                System.out.println("Invalid choice. Please enter 1, 2, or 3.");
+                scanner.close();
+                return;
+        }
+
+       
+        System.out.println("Total price: " + res);
+        scanner.close();
+    }
+}
